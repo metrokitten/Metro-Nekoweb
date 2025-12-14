@@ -1,0 +1,23 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Survey answers (user data)
+survey_answers.json
+
+# Environment files
+.env
+
+# VS Code settings
+.vscode/
+
+# Misc
+*.log
