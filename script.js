@@ -45,22 +45,25 @@ document.querySelectorAll('section').forEach(section => {
 /* ============================= */
 /*  Survey open confirmation    */
 /* ============================= */
-function openSurveyWithConfirm(e) {
-  e.preventDefault();
-  if (confirm('You are about to open the Metro Survey in a new tab. Continue?')) {
-    window.open('survey.html', '_blank');
-  }
-}
 
-const surveyLink = document.getElementById('survey-link');
-const surveyButton = document.getElementById('open-survey');
+//! Uncomment to enable Survey page
 
-if (surveyLink) surveyLink.addEventListener('click', openSurveyWithConfirm);
-if (surveyButton) surveyButton.addEventListener('click', openSurveyWithConfirm);
+// function openSurveyWithConfirm(e) {
+  // e.preventDefault();
+  // if (confirm('You are about to open the Metro Survey in a new tab. Continue?')) {
+    // window.open('survey.html', '_blank');
+  // }
+// }
+
+// const surveyLink = document.getElementById('survey-link');
+// const surveyButton = document.getElementById('open-survey');
+
+// if (surveyLink) surveyLink.addEventListener('click', openSurveyWithConfirm);
+// if (surveyButton) surveyButton.addEventListener('click', openSurveyWithConfirm);
 
 /* ============================= */
 /*  Survey page hook (safe)      */
 /* ============================= */
-if (document.getElementById('metro-survey')) {
-  // TODO: Survey-specific logic goes here later
-}
+// if (document.getElementById('metro-survey')) {
+  //
+// }

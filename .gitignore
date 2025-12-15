@@ -21,3 +21,4 @@ survey_answers.json
 
 # Misc
 *.log
+temp/
