@@ -46,24 +46,15 @@ document.querySelectorAll('section').forEach(section => {
 /*  Survey open confirmation    */
 /* ============================= */
 
-//! Uncomment to enable Survey page
-
-// function openSurveyWithConfirm(e) {
-  // e.preventDefault();
-  // if (confirm('You are about to open the Metro Survey in a new tab. Continue?')) {
-    // window.open('survey.html', '_blank');
-  // }
-// }
-
-// const surveyLink = document.getElementById('survey-link');
-// const surveyButton = document.getElementById('open-survey');
-
-// if (surveyLink) surveyLink.addEventListener('click', openSurveyWithConfirm);
-// if (surveyButton) surveyButton.addEventListener('click', openSurveyWithConfirm);
-
-/* ============================= */
-/*  Survey page hook (safe)      */
-/* ============================= */
-// if (document.getElementById('metro-survey')) {
-  //
-// }
+const surveyButton = document.getElementById('open-survey');
+if (surveyButton) {
+  surveyButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    const confirmed = globalThis.confirm(
+      'You are about to leave this site and open an external survey. Continue?'
+    );
+    if (confirmed) {
+      window.open('https://form.jotform.com/253486079480063', '_blank');
+    }
+  });
+}
