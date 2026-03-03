@@ -115,6 +115,7 @@ body {
 }
 
 .icon.hello { background: linear-gradient(135deg, #ff4e50, #ffb199); }
+.icon.hobbies { background: linear-gradient(135deg, #ff0000, #aa00ff); }
 .icon.my-projects { background: linear-gradient(135deg, #1cd85b, #a8ff78); }
 .icon.my-socials { background: linear-gradient(135deg, #43cea2, #185a9d); }
 .icon.take-the-survey { background: linear-gradient(135deg, #ff4e50, #1cd85b); }
