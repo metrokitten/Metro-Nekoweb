@@ -68,14 +68,13 @@ async function updateSpotifyStatus() {
     const res = await fetch(
       "https://cdn.jsdelivr.net/gh/metrokitten/Metro-Nekoweb/data/now-playing.json"
     );
-
     const data = await res.json();
     const el = document.getElementById("spotify-status");
-
     if (!el) return;
 
     if (data.isPlaying) {
-      el.textContent = `${data.song} — ${data.artist}`;
+      // Make the song a clickable link
+      el.innerHTML = `<a href="${data.spotifyUrl}" target="_blank">${data.song}</a> — ${data.artist}`;
     } else {
       el.textContent = "Not listening to anything";
     }
@@ -84,5 +83,5 @@ async function updateSpotifyStatus() {
   }
 }
 
-updateSpotifyStatus();
+await updateSpotifyStatus();
 setInterval(updateSpotifyStatus, 15000);
