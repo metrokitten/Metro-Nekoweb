@@ -58,3 +58,31 @@ if (surveyButton) {
     }
   });
 }
+
+/* ============================= */
+/*  Spotify Now Playing          */
+/* ============================= */
+
+async function updateSpotifyStatus() {
+  try {
+    const res = await fetch(
+      "https://cdn.jsdelivr.net/gh/metrokitten/Metro-Nekoweb/data/now-playing.json"
+    );
+
+    const data = await res.json();
+    const el = document.getElementById("spotify-status");
+
+    if (!el) return;
+
+    if (data.isPlaying) {
+      el.textContent = `${data.song} — ${data.artist}`;
+    } else {
+      el.textContent = "Not listening to anything";
+    }
+  } catch (err) {
+    console.error("Spotify widget error:", err);
+  }
+}
+
+await updateSpotifyStatus();
+setInterval(updateSpotifyStatus, 15000);
