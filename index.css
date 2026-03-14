@@ -29,9 +29,8 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-
   background: transparent;
-  border-radius: 18px;
+  border-radius: 0 0 18px 18px;
   border: 1.5px solid #e0e0e0;
   box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
@@ -129,7 +128,7 @@ body {
   padding: 36px 40px;
 
   background: rgba(255,255,255,0.92);
-  border-radius: 0 0 18px 0;
+  border-radius: 0 0 1px 0;
   box-shadow:
     0 2px 12px rgba(255,78,80,0.04),
     0 2px 12px rgba(28,216,91,0.04);
