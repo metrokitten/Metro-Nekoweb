@@ -2,7 +2,7 @@ name: Update Spotify Now Playing
 
 on:
   schedule:
-    - cron: '*/5  * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,14 +13,20 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Get Spotify Now Playing
-        id: spotify
-        uses: bmitch86/spotify-now-playing-action@v1.2.0
+      - name: Set up Node
+        uses: actions/setup-node@v3
         with:
-          client-id: ${{ secrets.SPOTIFY_CLIENT_ID }}
-          client-secret: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
-          refresh-token: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
-          output-file: data/now-playing.json
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install node-fetch@2
+
+      - name: Fetch Spotify Now Playing
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+        run: node fetch-spotify.js
 
       - name: Commit updated JSON
         run: |
