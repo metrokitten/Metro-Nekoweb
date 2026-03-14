@@ -84,5 +84,5 @@ async function updateSpotifyStatus() {
   }
 }
 
-await updateSpotifyStatus();
+updateSpotifyStatus();
 setInterval(updateSpotifyStatus, 15000);
