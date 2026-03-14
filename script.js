@@ -45,7 +45,6 @@ document.querySelectorAll('section').forEach(section => {
 /* ============================= */
 /*  Survey open confirmation    */
 /* ============================= */
-
 const surveyButton = document.getElementById('open-survey');
 if (surveyButton) {
   surveyButton.addEventListener('click', function (e) {
@@ -60,21 +59,24 @@ if (surveyButton) {
 }
 
 /* ============================= */
-/*  Spotify Now Playing          */
+/*  Spotify Now Playing Widget  */
 /* ============================= */
-
 async function updateSpotifyStatus() {
   try {
     const res = await fetch(
-      "https://cdn.jsdelivr.net/gh/metrokitten/Metro-Nekoweb/data/now-playing.json"
+      "https://cdn.jsdelivr.net/gh/metrokitten/Metro-Nekoweb/data/now-playing.json?" + Date.now()
     );
     const data = await res.json();
     const el = document.getElementById("spotify-status");
+
     if (!el) return;
 
     if (data.isPlaying) {
-      // Make the song a clickable link
-      el.innerHTML = `<a href="${data.spotifyUrl}" target="_blank">${data.song}</a> — ${data.artist}`;
+      // Clickable song + artist, optional album art
+      el.innerHTML = `
+        ${data.albumArt ? `<img src="${data.albumArt}" alt="Album Art" width="50" height="50" style="vertical-align:middle;margin-right:8px;border-radius:6px;">` : ''}
+        <a href="${data.spotifyUrl}" target="_blank" style="font-weight:bold;text-decoration:none;color:#ff4e50;">${data.song}</a> — ${data.artist}
+      `;
     } else {
       el.textContent = "Not listening to anything";
     }
@@ -83,5 +85,6 @@ async function updateSpotifyStatus() {
   }
 }
 
+// --- Initial call + interval update ---
 await updateSpotifyStatus();
 setInterval(updateSpotifyStatus, 15000);
