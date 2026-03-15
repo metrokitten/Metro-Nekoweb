@@ -59,32 +59,33 @@ if (surveyButton) {
 }
 
 /* ============================= */
-/*  Spotify Now Playing Widget  */
+/*  Last.fm Now Playing Widget   */
 /* ============================= */
-async function updateSpotifyStatus() {
+
+const LASTFM_USERNAME = "metr_"; // your Last.fm username
+const LASTFM_API_KEY = "1a1bcab18af9b9c038fbd5f9cbed8a90"; // your API key
+const LASTFM_URL = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LASTFM_USERNAME}&api_key=${LASTFM_API_KEY}&format=json&limit=1`;
+
+async function updateLastfmStatus() {
   try {
-    const res = await fetch(
-      "https://cdn.jsdelivr.net/gh/metrokitten/Metro-Nekoweb/data/now-playing.json?" + Date.now()
-    );
+    const res = await fetch(LASTFM_URL);
     const data = await res.json();
-    const el = document.getElementById("spotify-status");
+    const track = data.recenttracks.track[0];
+    const el = document.getElementById("lastfm-status");
+    if (!el || !track) return;
 
-    if (!el) return;
+    const isPlaying = track['@attr']?.nowplaying === "true";
 
-    if (data.isPlaying) {
-      // Clickable song + artist, optional album art
-      el.innerHTML = `
-        ${data.albumArt ? `<img src="${data.albumArt}" alt="Album Art" width="50" height="50" style="vertical-align:middle;margin-right:8px;border-radius:6px;">` : ''}
-        <a href="${data.spotifyUrl}" target="_blank" style="font-weight:bold;text-decoration:none;color:#ff4e50;">${data.song}</a> — ${data.artist}
-      `;
+    if (isPlaying) {
+      el.innerHTML = `<a href="${track.url}" target="_blank" style="font-weight:bold;text-decoration:none;color:#ff4e50;">${track.name}</a> — ${track.artist['#text']}`;
     } else {
       el.textContent = "Not listening to anything";
     }
   } catch (err) {
-    console.error("Spotify widget error:", err);
+    console.error("Last.fm widget error:", err);
   }
 }
 
-// --- Initial call + interval update ---
-await updateSpotifyStatus();
-setInterval(updateSpotifyStatus, 15000);
+// Initial call + interval (every 15 seconds)
+await updateLastfmStatus();
+setInterval(updateLastfmStatus, 15000);
