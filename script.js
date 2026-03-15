@@ -62,8 +62,8 @@ if (surveyButton) {
 /*  Last.fm Now Playing Widget   */
 /* ============================= */
 
-const LASTFM_USERNAME = "metr_"; // your Last.fm username
-const LASTFM_API_KEY = "1a1bcab18af9b9c038fbd5f9cbed8a90"; // your API key
+const LASTFM_USERNAME = "metr_";
+const LASTFM_API_KEY = "1a1bcab18af9b9c038fbd5f9cbed8a90";
 const LASTFM_URL = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LASTFM_USERNAME}&api_key=${LASTFM_API_KEY}&format=json&limit=1`;
 
 async function updateLastfmStatus() {
