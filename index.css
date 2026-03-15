@@ -12,7 +12,7 @@
 /* Base / Reset                  */
 /* ============================= */
 body {
-  margin: 0;
+  margin: 1;
   font-family: 'Pixelify Sans', sans-serif;
   background: linear-gradient(135deg, #ff4e50 0%, #1cd85b 100%);
   min-height: 100vh;
@@ -30,7 +30,7 @@ body {
   flex-direction: column;
   overflow: hidden;
   background: transparent;
-  border-radius: 0 0 18px 18px;
+  border-radius: 18px;
   border: 1.5px solid #e0e0e0;
   box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
