@@ -20,7 +20,7 @@ sidebarLinks.forEach(link => {
 /*  Section toggle buttons       */
 /* ============================= */
 document.querySelectorAll('section').forEach(section => {
-  if (section.id === 'notfound') return;
+  if (section.id === 'notfound' || section.id === 'thankyou') return;
   const inner = section.querySelector('.section-inner');
   if (!inner) return;
 
