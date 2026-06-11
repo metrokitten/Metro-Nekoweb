@@ -335,3 +335,62 @@ body {
     padding: 16px 8px;
   }
 }
+
+/* ============================= */
+/* Survey Components             */
+/* ============================= */
+
+.survey-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.survey-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 220px;
+
+  background: #000;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+
+  overflow: hidden;
+  z-index: 100;
+}
+
+.survey-dropdown.show {
+  display: block;
+}
+
+.survey-option {
+  width: 100%;
+  text-align: left;
+
+  background: #000;
+  color: #fff;
+
+  border: none;
+  padding: 10px 14px;
+
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.survey-option:hover {
+  background: linear-gradient(
+    270deg,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #9400d3,
+    #ff0000
+  );
+
+  background-size: 200% 200%;
+  animation: rainbow-bg-move-hover 8s linear infinite;
+}

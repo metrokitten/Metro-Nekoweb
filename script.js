@@ -56,17 +56,35 @@ document.querySelectorAll('section').forEach(section => {
 });
 
 /* ============================= */
-/*  Survey open confirmation    */
+/*  Survey stuff                 */
 /* ============================= */
-const surveyButton = document.getElementById('open-survey');
-if (surveyButton) {
-  surveyButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    const confirmed = globalThis.confirm(
-      'You are about to leave this site and open an external survey. Continue?'
-    );
-    if (confirmed) {
-      window.open('https://form.jotform.com/253486079480063', '_blank');
+const surveyToggle = document.getElementById('survey-toggle');
+const surveyDropdown = document.getElementById('survey-dropdown');
+
+if (surveyToggle && surveyDropdown) {
+  surveyToggle.addEventListener('click', () => {
+    surveyDropdown.classList.toggle('show');
+  });
+
+  document.querySelectorAll('.survey-option').forEach(option => {
+    option.addEventListener('click', () => {
+      const url = option.dataset.url;
+
+      const confirmed = globalThis.confirm(
+        'You are about to leave this site and open an external survey. Continue?'
+      );
+
+      if (confirmed) {
+        window.open(url, '_blank');
+      }
+
+      surveyDropdown.classList.remove('show');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.survey-menu')) {
+      surveyDropdown.classList.remove('show');
     }
   });
 }

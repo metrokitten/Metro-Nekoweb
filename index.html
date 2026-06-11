@@ -11,14 +11,11 @@
 
 <body>
   <div class="container">
-    <!-- HEADER -->
     <header class="header">
       <h1 class="title">MetroKitten's Corner</h1>
     </header>
 
-    <!-- BODY -->
     <div class="main">
-      <!-- SIDEBAR NAV -->
       <nav class="sidebar" aria-label="Main navigation">
         <a class="sidebar-item" data-target="hello" href="#hello">
           <span class="icon hello"></span>
@@ -42,13 +39,11 @@
 
         <a class="sidebar-item" id="survey-link" href="#survey" data-target="survey">
           <span class="icon take-the-survey"></span>
-          <span class="label">Take The Metro Survey</span>
+          <span class="label">Take My Surveys</span>
         </a>
       </nav>
 
-      <!-- CONTENT -->
       <main class="content">
-        <!-- HELLO SECTION -->
         <section id="hello">
           <div class="section-inner">
             <h2>Hello!</h2>
@@ -68,7 +63,6 @@
           </div>
         </section>
 
-        <!-- HOBBIES SECTION -->
         <section id="hobbies">
           <div class="section-inner">
             <h2>My Hobbies</h2>
@@ -87,7 +81,6 @@
           </div>
         </section>
 
-        <!-- PROJECTS SECTION -->
         <section id="projects">
           <div class="section-inner">
             <h2>Projects I'm Proud Of</h2>
@@ -112,7 +105,6 @@
           </div>
         </section>
 
-        <!-- SOCIALS SECTION -->
         <section id="socials">
           <div class="section-inner">
             <h2>Contact & Socials</h2>
@@ -124,20 +116,39 @@
           </div>
         </section>
 
-        <!-- SURVEY SECTION -->
         <section id="survey">
           <div class="section-inner">
-            <h2>Take The Metro Survey</h2>
-            <p>Help me by answering some very important questions!</p>
-            <button id="open-survey" class="toggle-section-btn" style="float: center;">Open Survey</button>
+            <h2>Browse Surveys</h2>
+            <p>I've prepared some questions. Would you mind filling them out?</p>
+
+            <div class="survey-menu">
+              <button id="survey-toggle" class="toggle-section-btn">
+                Browse Surveys ▼
+              </button>
+
+              <div id="survey-dropdown" class="survey-dropdown">
+                <button
+                  class="survey-option"
+                  data-url="https://form.jotform.com/253486079480063">
+                  Metro Survey (English)
+                </button>
+
+                <button
+                  class="survey-option"
+                  data-url="https://form.jotform.com/261571541948060">
+                  Metro Quiz (English)
+                </button>
+
+                <button
+                  class="survey-option"
+                  data-url="https://form.jotform.com/261615371321045">
+                  Metro Quiz (Türkçe)
+                </button>
+              </div>
+            </div>
           </div>
         </section>
-
-      </main>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
+      </main> </div> <footer class="footer">
       <small>&copy; 2026 MetroKitten. All rights reserved.</small>
     </footer>
   </div>
